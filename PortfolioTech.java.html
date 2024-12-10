@@ -1,67 +1,91 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>PortfolioTech.java</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #ed864a;}
-.s1 { color: #ebebeb;}
-.s2 { color: #ed864a; font-weight: bold;}
-.s3 { color: #54b33e;}
-</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body bgcolor="#131314">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-PortfolioTech.java</font>
-</center></td></tr></table>
-<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+<body>
 
-<span class="s0">public class </span><span class="s1">PortfolioTech</span>
-<span class="s1">{</span>
+</body>
+</html>
 
-    <span class="s0">public static void </span><span class="s1">main(String[] args)</span>
-    <span class="s1">{</span>
-        <span class="s1">Scanner scanner = </span><span class="s0">null</span><span class="s2">;</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Question Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+        button {
+            margin-left: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="input-row">
+        <label for="inputField">Your Question:</label>
+        <input type="text" id="inputField" placeholder="Type your question here" />
+        <button id="submitButton">Ask</button>
+    </div>
+    <textarea id="displayArea" readonly>What questions do you have?</textarea>
+</div>
 
-        <span class="s0">try</span>
-        <span class="s1">{</span>
-            <span class="s1">scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
-            <span class="s1">System.out.println(</span><span class="s3">&quot;What's your question?&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">String input = scanner.nextLine()</span><span class="s2">;</span>
+<script>
+    // References to DOM elements
+    const inputField = document.getElementById("inputField");
+    const submitButton = document.getElementById("submitButton");
+    const displayArea = document.getElementById("displayArea");
 
-            <span class="s0">if</span><span class="s1">(input.contains(</span><span class="s3">&quot;What is good writing?&quot;</span><span class="s1">))</span>
-            <span class="s1">{</span>
-                <span class="s1">System.out.printf(</span><span class="s3">&quot;'Good writing' can take on many forms and is very subjective. To some, 'good writing' is uniform and traditional––something that sounds familiar. Because it's familiar, it has to be correct, which is untrue. Instead, 'good writing' &quot; </span><span class="s1">+</span>
-                                  <span class="s3">&quot;is writing which guides you in a logical way and allows you to form your own opinion to be able to agree, disagree, or neither. &quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">}</span>
+    // Event listener for the button
+    submitButton.addEventListener("click", function () {
+        const input = inputField.value.trim();
 
-            <span class="s0">else if</span><span class="s1">(input.contains(</span><span class="s3">&quot;What are effective comments?&quot;</span><span class="s1">))</span>
-            <span class="s1">{</span>
-                <span class="s1">System.out.printf(</span><span class="s3">&quot;Effective comments noticeably come in three forms: evaluating coaching, or reacting comments.&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">}</span>
+        if (input.includes("What is good writing?")) {
+            displayArea.value = "'Good writing' can take on many forms and is very subjective. To some, 'good writing' is uniform and traditional––something that sounds familiar. Because it's familiar, it has to be correct, which is untrue. Instead, 'good writing' is writing which guides you in a logical way and allows you to form your own opinion to be able to agree, disagree, or neither.";
+        } else if (input.includes("What are effective comments?")) {
+            displayArea.value = "Effective comments noticeably come in three forms: evaluating, coaching, or reacting comments.";
+        } else if (input.includes("Can you give me examples of what kinds of questions to ask a tutee?")) {
+            displayArea.value = "Although there are a plethora of questions to ask a tutee about their writing, a few questions can help you get started:\n" +
+                "1. What are you trying to achieve in this 30-minute session?\n" +
+                "2. What is your topic? What is your inspiration for writing this?\n" +
+                "3. What are you trying to prove? What conclusions do you want the reader to make?";
+        } else {
+            displayArea.value = "I didn't understand your question. Please use a question from the list above!";
+        }
 
-            <span class="s0">else</span>
-            <span class="s1">{</span>
-                <span class="s1">System.out.printf(</span><span class="s3">&quot;I didn't understand your question. Please use a question from the list above!&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">}</span>
-
-        <span class="s1">}</span>
-
-        <span class="s0">catch</span><span class="s1">(Exception e)</span>
-        <span class="s1">{</span>
-            <span class="s1">System.out.println(</span><span class="s3">&quot;An error occurred: &quot; </span><span class="s1">+ e.getMessage())</span><span class="s2">;</span>
-        <span class="s1">}</span>
-
-        <span class="s0">finally</span>
-        <span class="s1">{</span>
-            <span class="s0">if</span><span class="s1">(scanner!= </span><span class="s0">null</span><span class="s1">)</span>
-            <span class="s1">{</span>
-                <span class="s1">scanner.close()</span><span class="s2">;</span>
-            <span class="s1">}</span>
-        <span class="s1">}</span>
-    <span class="s1">}</span>
-<span class="s1">}</span>
-</pre>
+        // Clear the input field
+        inputField.value = "";
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Question Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+        button {
+            margin-left: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="input-row">
+        <label for="inputField">What's your question?:</label>
+        <input type="text" id="inputField" placeholder="Type here" />
+        <button id="submitButton">Submit</button>
+    </div>
+    <textarea id="displayArea" readonly>What question do you have?</textarea>
+</div>
+
+<script>
+    // References to DOM elements
+    const inputField = document.getElementById("inputField");
+    const submitButton = document.getElementById("submitButton");
+    const displayArea = document.getElementById("displayArea");
+
+    // Event listener for the button
+    submitButton.addEventListener("click", function () {
+        const input = inputField.value.trim();
+
+        if (input.includes("What is good writing?"))
+        {
+            displayArea.value = "'Good writing' can take on many forms and is very subjective. To some, 'good writing' is uniform and traditional––something that sounds familiar. Because it's familiar, it has to be correct, which is untrue. Instead, 'good writing' is writing which guides you in a logical way and allows you to form your own opinion to be able to agree, disagree, or neither.";
+        }
+        else if (input.includes("What are effective comments?"))
+        {
+            displayArea.value = "Effective comments noticeably come in three forms: evaluating, coaching, or reacting comments.";
+        }
+        else if (input.includes("What are examples of questions to ask a tutee?"))
+        {
+            displayArea.value = "Although there are a plethora of questions to ask a tutee about their writing, a few questions can help you get started:\n" +
+                "1. 'What are you trying to achieve in this 30-minute session?'\n" +
+                "2. 'What is your topic? What is your inspiration for writing this?'\n" +
+                "3. 'What are you trying to prove? What conclusions do you want the reader to make?'";
+        }
+        else
+        {
+            displayArea.value = "I didn't understand your question. Please use a question from the list above!";
+        }
+        inputField.value = "";
+    });
+</script>
+</body>
+</html>
